@@ -23,18 +23,25 @@ public class QuadraticEqualsCalculatorImpl implements QuadraticEqualsCalculator 
     }
 
     @Override
-    public void calculate( ) {
+    public void solve( ) {
         if ( isEqualToZero( a ) ) {
             throw new RuntimeException( "a is equal to zero" );
         }
         if ( isEqualToZero( b ) ) {
             if ( (a > 0 && c > 0) || (a < 0 && c < 0) ) {
-                result = new double[0];
+                this.result = new double[0];
+            return;
             }
         }
-        if ( isEqualToZero( calculateDiscriminant( ) ) ) {
-            result = new double[]{-b / 2 * a};
+        var discriminant = calculateDiscriminant( );
+        if ( isEqualToZero( discriminant ) ) {
+            this.result = new double[]{-b / 2 * a};
+            return;
         }
+
+        var v = Math.sqrt( discriminant );
+
+        this.result = new double[]{(-b - v) / 2 * a, (-b + v) / 2 * a};
     }
 
     public double[] getResult( ) {

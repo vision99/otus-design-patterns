@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.otus.alex.QuadraticEqualsCalculatorImpl;
-@Tag( "quadratic-equals" )
+
+@Tag("quadratic-equals")
 public class QuadraticTest {
 
     /*
@@ -16,7 +17,7 @@ public class QuadraticTest {
         //given
         var calculator = new QuadraticEqualsCalculatorImpl( a, 0.0, c );
         //when
-        calculator.calculate( );
+        calculator.solve( );
         //then
         Assertions.assertArrayEquals( new double[]{}, calculator.getResult( ) );
     }
@@ -30,7 +31,7 @@ public class QuadraticTest {
         var calculator = new QuadraticEqualsCalculatorImpl( 0.0 );
         //when
         //then
-        Assertions.assertThrows( RuntimeException.class, calculator::calculate );
+        Assertions.assertThrows( RuntimeException.class, calculator::solve );
     }
 
     /*
@@ -41,9 +42,22 @@ public class QuadraticTest {
         //given
         var calculator = new QuadraticEqualsCalculatorImpl( 1.0, 2.0, 1.0 );
         //when
-        calculator.calculate( );
+        calculator.solve( );
         //then
         Assertions.assertArrayEquals( new double[]{-1.0}, calculator.getResult( ) );
+    }
+
+    /*
+    x^2-1 = 0
+     */
+    @Test
+    public void sqrtWithDiscriminantShouldHaveTwoAnswersWithMultiplicity_1( ) {
+        //given
+        var calculator = new QuadraticEqualsCalculatorImpl( 1.0, 0.0, -1.0 );
+        //when
+        calculator.solve( );
+        //then
+        Assertions.assertArrayEquals( new double[]{-1.0, 1.0}, calculator.getResult( ) );
     }
 
 }
