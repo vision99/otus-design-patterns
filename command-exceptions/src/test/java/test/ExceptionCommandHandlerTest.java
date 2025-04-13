@@ -14,7 +14,7 @@ import java.util.Map;
 import static java.lang.Thread.sleep;
 import static org.mockito.Mockito.*;
 
-@Tag("command-exception")
+@Tag("command-exceptions")
 public class ExceptionCommandHandlerTest {
 
     @Test

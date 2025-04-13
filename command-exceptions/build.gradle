@@ -17,7 +17,5 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform {
-        includeTags tag
-    }
+    useJUnitPlatform ()
 }
