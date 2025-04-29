@@ -1,3 +1,4 @@
 rootProject.name = 'otus-design-patterns'
 include 'quadratic-equals'
+include 'command-excepions'
 
