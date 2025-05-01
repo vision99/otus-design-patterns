@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.otus.move.MovingObject;
 import org.otus.move.MovingObjectAdapter;
+import org.otus.move.RotateObject;
+import org.otus.move.RotateObjectAdapter;
+import org.otus.move.model.Angle;
+import org.otus.move.model.AngularVelocity;
 import org.otus.move.model.PointOfLocation;
 import org.otus.move.model.SpaceShip;
 
@@ -16,7 +20,7 @@ public class MovingObjectsTest {
     void movingTest( ) {
         var spaceShip = new SpaceShip( );
         spaceShip.setProperty( "location", new PointOfLocation( 3.0, 10.0 ) );
-        spaceShip.setProperty( "angle", Math.PI / 2 );
+        spaceShip.setProperty( "angle", new Angle( Math.PI / 2 ) );
         spaceShip.setProperty( "velocity", 1 );
         MovingObject movingObject = new MovingObjectAdapter( spaceShip );
         movingObject.setLocation( new PointOfLocation(
@@ -24,8 +28,75 @@ public class MovingObjectsTest {
                 , movingObject.getLocation( ).getY( ) + movingObject.getVelocity( ).getY( )
         ) );
 
-        System.err.println( movingObject.getLocation( ) );
         Assertions.assertEquals( new PointOfLocation( 3.0, 11.0 ), movingObject.getLocation( ) );
+
+    }
+
+    @Test
+    void try_get_location_if_absent_should_throw_exception( ) {
+        var spaceShip = new SpaceShip( );
+        MovingObject movingObject = new MovingObjectAdapter( spaceShip );
+        Exception ex = Assertions.assertThrows( IllegalStateException.class, movingObject::getLocation );
+        Assertions.assertEquals( "location not found", ex.getMessage( ) );
+
+    }
+
+    @Test
+    void try_get_velocity_if_absent_should_throw_exception( ) {
+        var spaceShip = new SpaceShip( );
+        MovingObject movingObject = new MovingObjectAdapter( spaceShip );
+        Exception ex = Assertions.assertThrows( IllegalStateException.class, movingObject::getVelocity );
+        Assertions.assertEquals( "velocity not found", ex.getMessage( ) );
+
+    }
+
+
+    @Test
+    void try_move_if_absent_should_throw_exception( ) {
+        var spaceShip = new SpaceShip( );
+        MovingObject movingObject = new MovingObjectAdapter( spaceShip );
+        Exception ex = Assertions.assertThrows( IllegalStateException.class, ( ) -> movingObject.setLocation( null ) );
+        Assertions.assertEquals( "new location is null", ex.getMessage( ) );
+
+    }
+
+
+    @Test
+    void rotate_object_Test( ) {
+        var spaceShip = new SpaceShip( );
+        //        spaceShip.setProperty( "location", new PointOfLocation( 3.0, 10.0 ) );
+        spaceShip.setProperty( "angle", new Angle( Math.PI / 2 ) );
+        spaceShip.setProperty( "angularVelocity", new AngularVelocity( 0.00123 ) );
+        RotateObject rotateObject = new RotateObjectAdapter( spaceShip );
+        Assertions.assertEquals( new AngularVelocity( 1.5720263267948966 ), rotateObject.getAngularVelocity( ) );
+
+    }
+
+    @Test
+    void try_get_angle_if_absent_should_throw_exception( ) {
+        var spaceShip = new SpaceShip( );
+        RotateObject rotateObject = new RotateObjectAdapter( spaceShip );
+        Exception ex = Assertions.assertThrows( IllegalStateException.class, rotateObject::getAngle );
+        Assertions.assertEquals( "angle not found", ex.getMessage( ) );
+
+    }
+
+    @Test
+    void try_get_angular_velocity_if_absent_should_throw_exception( ) {
+        var spaceShip = new SpaceShip( );
+        RotateObject rotateObject = new RotateObjectAdapter( spaceShip );
+        Exception ex = Assertions.assertThrows( IllegalStateException.class, rotateObject::getAngularVelocity );
+        Assertions.assertEquals( "angular velocity not found", ex.getMessage( ) );
+
+    }
+
+
+    @Test
+    void try_rotate_if_absent_should_throw_exception( ) {
+        var spaceShip = new SpaceShip( );
+        RotateObject rotateObject = new RotateObjectAdapter( spaceShip );
+        Exception ex = Assertions.assertThrows( IllegalStateException.class, ( ) -> rotateObject.setAngle( null ) );
+        Assertions.assertEquals( "angle is null", ex.getMessage( ) );
 
     }
 

@@ -1,5 +1,6 @@
 package org.otus.move;
 
+import org.otus.move.model.Angle;
 import org.otus.move.model.PointOfLocation;
 import org.otus.move.model.VelocityVector;
 
@@ -15,7 +16,7 @@ public class MovingObjectAdapter implements MovingObject {
 
     @Override
     public void setLocation( PointOfLocation point ) {
-        uObject.setProperty( "location", point );
+        uObject.setProperty( "location", Optional.ofNullable( point ).orElseThrow( ( ) -> new IllegalStateException( "new location is null" ) ) );
     }
 
     @Override
@@ -25,9 +26,9 @@ public class MovingObjectAdapter implements MovingObject {
 
     @Override
     public VelocityVector getVelocity( ) {
-        int velocity = (int) uObject.getProperty( "velocity" );
-        double angle = (double) uObject.getProperty( "angle" );
-        return new VelocityVector( velocity * Math.cos( angle ), velocity * Math.sin( angle ) );
+        int velocity = (int) Optional.ofNullable( uObject.getProperty( "velocity" ) ).orElseThrow( ( ) -> new IllegalStateException( "velocity not found" ) );
+        var angle = (Angle) Optional.ofNullable( uObject.getProperty( "angle" ) ).orElseThrow( ( ) -> new IllegalStateException( "angle not found" ) );
+        return new VelocityVector( velocity * Math.cos( angle.getValue() ), velocity * Math.sin( angle.getValue() ) );
     }
 
 }
