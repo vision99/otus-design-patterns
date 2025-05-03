@@ -31,4 +31,8 @@ public class MovingObjectAdapter implements MovingObject {
         return new VelocityVector( velocity * Math.cos( angle.getValue() ), velocity * Math.sin( angle.getValue() ) );
     }
 
+    public UObject getuObject( ) {
+        return uObject;
+    }
+
 }

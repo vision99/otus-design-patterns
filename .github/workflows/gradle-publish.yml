@@ -18,11 +18,13 @@ on:
           - 'quadratic-equals'
           - 'command-exceptions'
           - 'moving-objects'
+          - 'macro-command'
   push:
     branches:
       - quadratic-equals
       - command-exception
       - moving-objects
+      - macro-command
 jobs:
   build:
     runs-on: ubuntu-latest
