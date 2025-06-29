@@ -31,4 +31,9 @@ public class RotateObjectAdapter implements RotateObject {
         uObject.setProperty( "angle", angle );
     }
 
+    @Override
+    public void rotate( ) {
+        setAngle( new Angle( getAngularVelocity( ).getAngularVelocity( ) ) );
+    }
+
 }

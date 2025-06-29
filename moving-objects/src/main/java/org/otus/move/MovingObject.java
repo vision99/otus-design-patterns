@@ -10,6 +10,10 @@ public interface MovingObject {
 
     PointOfLocation getLocation( );
 
-    VelocityVector getVelocity( );
+    VelocityVector getVelocityVector( );
+
+    void move( );
+
+    void setVelocity( Integer velocity );
 
 }

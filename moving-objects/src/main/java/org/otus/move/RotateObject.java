@@ -11,6 +11,6 @@ public interface RotateObject {
 
     void setAngle( Angle angle );
 
-    //    AngularVelocity getAngularVelocity( );
+    void rotate(  );
 
 }

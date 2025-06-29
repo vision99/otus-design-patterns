@@ -3,10 +3,7 @@ package moving.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.otus.move.MovingObject;
-import org.otus.move.MovingObjectAdapter;
-import org.otus.move.RotateObject;
-import org.otus.move.RotateObjectAdapter;
+import org.otus.move.*;
 import org.otus.move.model.Angle;
 import org.otus.move.model.AngularVelocity;
 import org.otus.move.model.PointOfLocation;
@@ -23,11 +20,8 @@ public class MovingObjectsTest {
         spaceShip.setProperty( "angle", new Angle( Math.PI / 2 ) );
         spaceShip.setProperty( "velocity", 1 );
         MovingObject movingObject = new MovingObjectAdapter( spaceShip );
-        movingObject.setLocation( new PointOfLocation(
-                movingObject.getLocation( ).getX( ) + movingObject.getVelocity( ).getX( )
-                , movingObject.getLocation( ).getY( ) + movingObject.getVelocity( ).getY( )
-        ) );
-
+        Command obj = new Move( movingObject );
+        obj.execute( );
         Assertions.assertEquals( new PointOfLocation( 3.0, 11.0 ), movingObject.getLocation( ) );
 
     }
@@ -45,7 +39,7 @@ public class MovingObjectsTest {
     void try_get_velocity_if_absent_should_throw_exception( ) {
         var spaceShip = new SpaceShip( );
         MovingObject movingObject = new MovingObjectAdapter( spaceShip );
-        Exception ex = Assertions.assertThrows( IllegalStateException.class, movingObject::getVelocity );
+        Exception ex = Assertions.assertThrows( IllegalStateException.class, movingObject::getVelocityVector );
         Assertions.assertEquals( "velocity not found", ex.getMessage( ) );
 
     }
@@ -68,7 +62,9 @@ public class MovingObjectsTest {
         spaceShip.setProperty( "angle", new Angle( Math.PI / 2 ) );
         spaceShip.setProperty( "angularVelocity", new AngularVelocity( 0.00123 ) );
         RotateObject rotateObject = new RotateObjectAdapter( spaceShip );
-        Assertions.assertEquals( new AngularVelocity( 1.5720263267948966 ), rotateObject.getAngularVelocity( ) );
+        Command obj = new Rotate( rotateObject );
+        obj.execute( );
+        Assertions.assertEquals( new AngularVelocity( 1.5732563267948967 ).getAngularVelocity(), rotateObject.getAngularVelocity( ).getAngularVelocity() );
 
     }
 
