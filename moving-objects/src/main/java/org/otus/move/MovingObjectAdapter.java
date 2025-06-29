@@ -43,4 +43,8 @@ public class MovingObjectAdapter implements MovingObject {
         setLocation( new PointOfLocation( currentLocation.getX( ) + velocityVector.getX( ), currentLocation.getY( ) + velocityVector.getY( ) ) );
     }
 
+    public UObject getuObject( ) {
+        return uObject;
+    }
+
 }
