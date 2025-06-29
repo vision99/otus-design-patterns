@@ -1,4 +1,4 @@
-package org.otus.alex;
+package org.otus.move;
 
 public class Main {
 

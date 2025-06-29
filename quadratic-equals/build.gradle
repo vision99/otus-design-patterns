@@ -16,6 +16,6 @@ dependencies {
 
 test {
     useJUnitPlatform{
-        includeTags tag
+        includeTags 'quadratic-equals'
     }
 }

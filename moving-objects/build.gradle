@@ -12,9 +12,11 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation project(':moving-objects')
+//    implementation project(':macro-command')
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform{
+        includeTags 'moving-objects'
+    }
 }
