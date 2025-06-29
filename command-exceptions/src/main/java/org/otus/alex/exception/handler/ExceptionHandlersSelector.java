@@ -2,6 +2,7 @@ package org.otus.alex.exception.handler;
 
 import org.otus.alex.exception.handler.commands.LogExceptionCommand;
 import org.otus.alex.exception.handler.commands.SecondThrowExceptionCommand;
+import org.otus.move.Command;
 
 import java.util.Map;
 

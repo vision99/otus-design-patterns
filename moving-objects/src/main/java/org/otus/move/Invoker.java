@@ -1,4 +1,4 @@
-package org.otus.alex.exception.handler;
+package org.otus.move;
 
 public interface Invoker {
 

@@ -1,8 +1,8 @@
 package org.otus.alex;
 
-import org.otus.alex.exception.handler.Command;
 import org.otus.alex.exception.handler.CommandInvoker;
 import org.otus.alex.exception.handler.commands.FirstThrowExceptionCommand;
+import org.otus.move.Command;
 
 public class Main {
 

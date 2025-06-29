@@ -1,5 +1,8 @@
 package org.otus.alex.exception.handler;
 
+import org.otus.move.Command;
+import org.otus.move.Invoker;
+
 public class CommandInvoker implements Invoker {
 
     private Command command;

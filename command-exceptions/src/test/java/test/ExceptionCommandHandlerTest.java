@@ -3,11 +3,11 @@ package test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.otus.alex.exception.handler.Command;
 import org.otus.alex.exception.handler.CommandInvoker;
 import org.otus.alex.exception.handler.commands.FirstThrowExceptionCommand;
 import org.otus.alex.exception.handler.commands.LogExceptionCommand;
 import org.otus.alex.exception.handler.commands.SecondThrowExceptionCommand;
+import org.otus.move.Command;
 
 import java.util.Map;
 

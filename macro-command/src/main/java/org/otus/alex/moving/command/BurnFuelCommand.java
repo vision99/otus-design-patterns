@@ -1,7 +1,7 @@
 package org.otus.alex.moving.command;
 
-import org.otus.alex.exception.handler.Command;
-import org.otus.alex.model.Fuel;
+import org.otus.move.model.Fuel;
+import org.otus.move.Command;
 import org.otus.move.UObject;
 
 public class BurnFuelCommand implements Command {

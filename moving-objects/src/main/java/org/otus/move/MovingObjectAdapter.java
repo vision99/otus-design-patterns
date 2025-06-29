@@ -38,6 +38,9 @@ public class MovingObjectAdapter implements MovingObject {
 
     @Override
     public void move( ) {
+        if ( !((Boolean) uObject.getProperty( "isFuelExists" )) ) {
+            throw new RuntimeException( "fuel is not exists" );
+        }
         VelocityVector velocityVector = getVelocityVector( );
         PointOfLocation currentLocation = getLocation( );
         setLocation( new PointOfLocation( currentLocation.getX( ) + velocityVector.getX( ), currentLocation.getY( ) + velocityVector.getY( ) ) );

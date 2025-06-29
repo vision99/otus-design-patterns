@@ -3,6 +3,7 @@ package moving.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.otus.move.model.Fuel;
 import org.otus.move.*;
 import org.otus.move.model.Angle;
 import org.otus.move.model.AngularVelocity;
@@ -19,6 +20,8 @@ public class MovingObjectsTest {
         spaceShip.setProperty( "location", new PointOfLocation( 3.0, 10.0 ) );
         spaceShip.setProperty( "angle", new Angle( Math.PI / 2 ) );
         spaceShip.setProperty( "velocity", 1 );
+        spaceShip.setProperty( "fuel", new Fuel( 1 ) );
+        spaceShip.setProperty( "isFuelExists", true );
         MovingObject movingObject = new MovingObjectAdapter( spaceShip );
         Command obj = new Move( movingObject );
         obj.execute( );

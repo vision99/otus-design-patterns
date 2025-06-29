@@ -1,5 +1,7 @@
 package org.otus.alex.exception.handler;
 
+import org.otus.move.Command;
+
 import java.util.LinkedList;
 import java.util.Queue;
 

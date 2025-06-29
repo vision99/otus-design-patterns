@@ -1,6 +1,6 @@
 package org.otus.alex.exception.handler.commands;
 
-import org.otus.alex.exception.handler.Command;
+import org.otus.move.Command;
 
 import java.util.logging.Logger;
 

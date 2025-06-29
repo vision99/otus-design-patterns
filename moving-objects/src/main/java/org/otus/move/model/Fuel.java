@@ -1,6 +1,7 @@
-package org.otus.alex.model;
+package org.otus.move.model;
 
 public class Fuel {
+
     private int fuel;
 
     public Fuel( int fuel ) {
@@ -9,6 +10,10 @@ public class Fuel {
 
     public int getValue( ) {
         return fuel;
+    }
+
+    public void setValue( int fuel ) {
+        this.fuel = fuel;
     }
 
 }

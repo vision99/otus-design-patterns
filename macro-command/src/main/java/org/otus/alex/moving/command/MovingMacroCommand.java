@@ -1,7 +1,7 @@
 package org.otus.alex.moving.command;
 
-import org.otus.alex.exception.handler.Command;
-import org.otus.move.MovingObject;
+import org.otus.move.Command;
+import org.otus.move.Move;
 import org.otus.move.MovingObjectAdapter;
 import org.otus.move.UObject;
 
@@ -13,14 +13,14 @@ public class MovingMacroCommand implements Command {
 
     @Override
     public void execute( ) {
-        var commandsLst = List.of( new CheckFuelCommand( uObject ), new MoveCommand( uObject ), new BurnFuelCommand( uObject ) );
+        List<Command> commandsLst = List.of( new Check( new CheckFuelAdapter( uObject ) ), new Move( new MovingObjectAdapter( uObject ) ), new Burn( new BurnFuelAdapter( uObject ) ) );
         commandsLst.forEach( Command::execute );
 
     }
 
 
-    public MovingMacroCommand( MovingObject movingObject ) {
-        this.uObject = ((MovingObjectAdapter) movingObject).getuObject( );
+    public MovingMacroCommand( UObject uObject ) {
+        this.uObject = uObject;
 
     }
 
