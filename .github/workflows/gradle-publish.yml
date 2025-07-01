@@ -19,6 +19,7 @@ on:
           - 'command-exceptions'
           - 'moving-objects'
           - 'macro-command'
+          - 'ioc'
   push:
     branches:
       - quadratic-equals
