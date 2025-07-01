@@ -19,4 +19,11 @@ public class SpaceShip implements UObject {
         properties.put( property, point );
     }
 
+    public SpaceShip( Map<String, Object> properties ) {
+        this.properties = properties;
+    }
+
+    public SpaceShip( ) {
+    }
+
 }

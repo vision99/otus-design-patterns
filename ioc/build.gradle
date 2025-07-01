@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.otus.alex'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation project(':moving-objects')
+}
+
+test {
+    useJUnitPlatform{
+        includeTags 'ioc'
+        maxParallelForks 4
+        systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+        systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'dynamic'
+        systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
+        systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'concurrent'
+    }
+}

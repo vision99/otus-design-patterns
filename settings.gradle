@@ -3,4 +3,6 @@ include 'quadratic-equals'
 include 'command-exceptions'
 include 'macro-command'
 include 'moving-objects'
+include 'ioc'
+include 'ioc'
 
